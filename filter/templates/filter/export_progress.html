@@ -1,0 +1,19 @@
+{% extends "admin/base_site.html" %}
+
+{% block content %}
+  <div id="content-main">
+    <form method="post" action="" enctype="multipart/form-data">
+      {% csrf_token %}
+      <input type="hidden" name="_selected_action" value="{{ queryset|queryset_to_csv }}" />
+      <input type="hidden" name="action" value="export_to_csv" />
+
+      <div class="progress">
+        <div class="progress-bar progress-bar-striped active" role="progressbar" style="width: 0%">
+          0%
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Export</button>
+    </form>
+  </div>
+{% endblock %}
